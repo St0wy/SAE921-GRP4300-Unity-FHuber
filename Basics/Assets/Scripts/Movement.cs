@@ -17,8 +17,6 @@ public class Movement : MonoBehaviour
     private void OnMove(InputValue value)
     {
         movement = value.Get<Vector2>();
-        movement *= speed * Time.deltaTime;
-        rb.velocity = movement;
     }
 
     private void FixedUpdate()
