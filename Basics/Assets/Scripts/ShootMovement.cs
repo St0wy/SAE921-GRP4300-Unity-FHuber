@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShootMovement : MonoBehaviour
@@ -21,17 +22,20 @@ public class ShootMovement : MonoBehaviour
     private void Update()
     {
         // Get the position of the mouse in world point
-        mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
 
-    private void FixedUpdate()
+    public void Move(InputAction.CallbackContext context)
     {
-        var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        var movement = context.action.ReadValue<Vector2>();
         movement *= speed * Time.deltaTime;
         rb.velocity = movement;
-        
+    }
+
+    
+    private void FixedUpdate()
+    {
         // Rotates the player to the mouse position
         rb.rotation = mousePosition.AngleToPoint(rb.position) + rotationOffset;
-
     }
 }

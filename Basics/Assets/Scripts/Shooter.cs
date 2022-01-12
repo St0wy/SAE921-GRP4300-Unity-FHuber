@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooter : MonoBehaviour
 {
@@ -8,10 +9,9 @@ public class Shooter : MonoBehaviour
     public Transform firePoint;
     public float bulletForce = 20f;
 
-    private void Update()
+    public void Shoot(InputAction.CallbackContext context)
     {
-        if (!Input.GetButtonDown("Fire1")) return;
-
+        if (!context.started) return;
         // Instantiate the bullet
         var bullet = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
 

@@ -11,12 +11,14 @@ public class Collector : MonoBehaviour
         scoreBehaviour = GetComponent<ScoreBehaviour>();
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         // Check that we collide with an item
-        if (!col.gameObject.CompareTag("item")) return;
+        var item = col.gameObject;
+        
+        if (!item.CompareTag("item")) return;
         
         scoreBehaviour.IncrementScore();
-        Destroy(col.gameObject);
+        Destroy(item);
     }
 }
