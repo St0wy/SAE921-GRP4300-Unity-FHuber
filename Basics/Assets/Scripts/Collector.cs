@@ -1,24 +1,14 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(ScoreBehaviour))]
 public class Collector : MonoBehaviour
 {
-    [SerializeField] private float speed = 17;
-
     private ScoreBehaviour scoreBehaviour;
-    private Rigidbody2D rb;
 
     private void Awake()
     {
         scoreBehaviour = GetComponent<ScoreBehaviour>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
-    {
-        var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        movement *= speed * Time.deltaTime;
-        rb.velocity = movement;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
