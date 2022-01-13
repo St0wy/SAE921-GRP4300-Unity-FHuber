@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    private const float MIN_POS_X = -9;
-    private const float MIN_POS_Y = 5;
-    private const float MAX_POS_X = 9;
-    private const float MAX_POS_Y = -5;
-
+    private const float MinPosX = -9;
+    private const float MinPosY = 5;
+    private const float MaxPosX = 9;
+    private const float MaxPosY = -5;
 
     public GameObject itemPrefab;
 
@@ -17,8 +16,8 @@ public class ItemSpawner : MonoBehaviour
     {
         for (var i = 0; i < itemsToSpawn; i++)
         {
-            var newPos = new Vector2(Random.Range(MIN_POS_X, MAX_POS_X), Random.Range(MIN_POS_Y, MAX_POS_Y));
-            var item = Instantiate(itemPrefab, newPos, Quaternion.identity);
+            var newPos = new Vector2(Random.Range(MinPosX, MaxPosX), Random.Range(MinPosY, MaxPosY));
+            GameObject item = Instantiate(itemPrefab, newPos, Quaternion.identity);
             item.tag = "item";
         }
     }

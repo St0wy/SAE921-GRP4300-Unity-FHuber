@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +6,7 @@ public class ShootMovement : MonoBehaviour
 {
     public Camera cam;
 
-    [SerializeField] private int rotationOffset = 0;
+    [SerializeField] private int rotationOffset;
     [SerializeField] private float speed = 300;
     private Rigidbody2D rb;
     private Vector2 mousePosition;

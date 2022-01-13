@@ -9,8 +9,8 @@ public static class Extensions
     /// <param name="destination">Destination point</param>
     public static float AngleToPoint(this Vector2 vector, Vector2 destination)
     {
-        var lookDirection = destination - vector;
-        var rotZ = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        Vector2 lookDirection = destination - vector;
+        float rotZ = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         return rotZ;
     }
 }
