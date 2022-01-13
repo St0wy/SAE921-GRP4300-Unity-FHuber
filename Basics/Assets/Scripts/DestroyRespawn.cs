@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DestroyRespawn : MonoBehaviour
 {
@@ -9,9 +11,8 @@ public class DestroyRespawn : MonoBehaviour
 
     public GameObject cubePrefab;
 
-    private void OnMouseOver()
+    private void OnMouseDown()
     {
-        if (!Input.GetMouseButtonDown(0)) return;
         var newPos = new Vector2(Random.Range(MIN_POS_X, MAX_POS_X), Random.Range(MIN_POS_Y, MAX_POS_Y));
         var instance = Instantiate(cubePrefab, newPos, Quaternion.identity);
         var cubeBehaviour = instance.GetComponent<DestroyRespawn>();
